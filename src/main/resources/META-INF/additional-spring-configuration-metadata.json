@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "datastax.astra",
+  "type": "java.lang.String",
+  "description": "A description for 'datastax.astra'"
+}]}
