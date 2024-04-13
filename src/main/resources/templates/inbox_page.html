@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <title>Inbox</title>
+  </head>
+  <body>
+    <div class="container h-100">
+      <header class="row bg-primary"><h1>Hello, name</h1></header>
+      <div class="row">
+        <nav class="col-2">
+            <div class="card">
+                <div class="card-header">Featured</div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li
+                        class="list-group-item d-flex justify-content-between align-items-center"
+                        th:each="folder : ${userfolders}"
+                        >
+                        <p th:text="${folder.label}">Label</p>
+                        <span class="badge bg-primary rounded-pill">14</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <main class="col">Email List</main>
+      </div>
+      <footer class="row">footer</footer>
+    </div>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

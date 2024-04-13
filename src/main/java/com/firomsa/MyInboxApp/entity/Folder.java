@@ -9,8 +9,8 @@ import org.springframework.data.cassandra.core.mapping.CassandraType.Name;
 @Table(value ="folder_by_user")
 public class Folder {
 
-    @PrimaryKeyColumn(name = "user_id" , ordinal = 0 , type = PrimaryKeyType.PARTITIONED)
-    private String userId;
+    @PrimaryKeyColumn(name = "user_Id" , ordinal = 0 , type = PrimaryKeyType.PARTITIONED)
+    private String id;
 
     @PrimaryKeyColumn(name = "label" , ordinal = 1 , type = PrimaryKeyType.CLUSTERED)
     private String label;
@@ -18,12 +18,21 @@ public class Folder {
     @CassandraType(type = Name.TEXT)
     private String color;
 
-    public String getUserId() {
-        return userId;
+    public Folder() {
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public Folder(String id, String label, String color) {
+        this.id = id;
+        this.label = label;
+        this.color = color;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getLabel() {
