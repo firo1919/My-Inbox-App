@@ -30,7 +30,7 @@ public class FolderService {
     public List<Folder> fetchDefaultFolders(String userId){
         return Arrays.asList(
             new Folder(userId, "Inbox", "white"),
-            new Folder("firo1919", "Sent Items", "green"),
+            new Folder("firo1919", "Sent Messages", "green"),
             new Folder(userId, "Important", "red")
             );
     }

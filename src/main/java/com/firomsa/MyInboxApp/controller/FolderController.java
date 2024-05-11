@@ -21,30 +21,24 @@ import com.firomsa.MyInboxApp.service.EmailListItemService;
 import com.firomsa.MyInboxApp.service.FolderService;
 
 @Controller
-public class InboxController {
+public class FolderController {
 
 
 	FolderService folderService;
     EmailListItemService emailListItemService;
 
 	@Autowired
-	public InboxController(FolderService folderService, EmailListItemService emailListItemService) {
-		this.folderService = folderService;
+	public FolderController(FolderService folderService, EmailListItemService emailListItemService) {
         this.emailListItemService = emailListItemService;
 	}
 
-    @GetMapping("/")
-    public String home(@RequestParam String folder,@AuthenticationPrincipal OAuth2User principal,Model model){
+    @GetMapping("/folder")
+    public String home(@RequestParam String folder, @AuthenticationPrincipal OAuth2User principal,Model model){
         if(principal == null || !StringUtils.hasText(principal.getAttribute("name"))){
             return "index";
         }
         String userid = principal.getAttribute("login");
 
-        //fetch folders
-        List<Folder> folders = folderService.getFolders(userid);
-        List<Folder> defaultfolders = folderService.fetchDefaultFolders(userid);
-        model.addAttribute("userfolders", folders);
-        model.addAttribute("defaultfolders", defaultfolders);
         PrettyTime p = new PrettyTime();
         //fetch messages
         List<EmailListItem> inboxEmails = emailListItemService.findInboxEmails(userid);
@@ -55,8 +49,8 @@ public class InboxController {
         });
 
         model.addAttribute("inboxlist", inboxEmails);
-        model.addAttribute("folder", folder);
+        model.addAttribute("folder",folder);
 
-        return "inbox_page";
+        return "folder";
     }
 }

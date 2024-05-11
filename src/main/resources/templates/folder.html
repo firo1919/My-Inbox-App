@@ -1,0 +1,15 @@
+<div class="card h-100" th:if="${inboxlist}">
+    <div class="card-header" th:text="${folder}">Inbox</div>
+    <div class="card-body">
+      <div class="list-group">
+        <div class="list-group-item list-group-item-action" th:each="inboxemail: ${inboxlist}" 
+        hx-get="" hx-trigger="click" hx-target="#content" th:attr="hx-get=@{'/emails/'+${inboxemail.key.timeUuid}}">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1" th:text="${inboxemail.subject}">List group item heading</h5>
+            <small th:text="${inboxemail.agoTimeString}">3 days ago</small>
+          </div>
+          <p class="mb-1" th:text="${inboxemail.to}">Some placeholder content in a paragraph.</p>
+        </div>
+      </div>
+    </div>
+</div>

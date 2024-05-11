@@ -31,7 +31,7 @@ public class EmailViewController {
         }
         Email email = emailService.getEmail(id);
         if(email==null){
-            return "inbox_page";
+            return "home";
         }
         String toIds = String.join(", ", email.getTo());
         model.addAttribute("email", email);
