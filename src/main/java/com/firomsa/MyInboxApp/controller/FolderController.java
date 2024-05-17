@@ -41,14 +41,14 @@ public class FolderController {
 
         PrettyTime p = new PrettyTime();
         //fetch messages
-        List<EmailListItem> inboxEmails = emailListItemService.findInboxEmails(userid);
-        inboxEmails.forEach(emailItem->{
+        List<EmailListItem> folderItems = emailListItemService.getEmailListItems(folder, userid);
+        folderItems.forEach(emailItem->{
             UUID timeuuid =  emailItem.getKey().getTimeUuid();
             Date emailDateTime = new Date(Uuids.unixTimestamp(timeuuid));
             emailItem.setAgoTimeString(p.format(emailDateTime));
         });
 
-        model.addAttribute("inboxlist", inboxEmails);
+        model.addAttribute("folderlist", folderItems);
         model.addAttribute("folder",folder);
 
         return "folder";

@@ -18,7 +18,6 @@ public class HomeController {
     
     FolderService folderService;
 
-    @Autowired
 	public HomeController(FolderService folderService) {
 		this.folderService = folderService;
 	}
@@ -30,9 +29,7 @@ public class HomeController {
         String userid = principal.getAttribute("login");
         //fetch folders
         List<Folder> folders = folderService.getFolders(userid);
-        List<Folder> defaultfolders = folderService.fetchDefaultFolders(userid);
-        model.addAttribute("userfolders", folders);
-        model.addAttribute("defaultfolders", defaultfolders);
+        model.addAttribute("defaultfolders", folders);
         model.addAttribute("user",userid);
         return "home";
     }

@@ -3,21 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <title>My-Inbox-App</title>
   </head>
   <body>
     <div class="container">
       <header class="row"><h1>Hello, <span th:text="${user}">name</span></h1></header>
       <div class="row">
-        <nav class="col-3 h-100">
+        <nav class="col-3">
           <div class="card">
             <div href="/compose" class="btn btn-primary" hx-get="/compose" hx-trigger="click" hx-target="#content">Compose Message</div>
           </div>
           <div th:insert="~{components/folder_list :: folder_list(panelName='Folders',folders=${defaultfolders})}"></div>
-          <div th:insert="~{components/folder_list :: folder_list(panelName='User Folders',folders=${userfolders})}"></div>
+          <!-- <div th:insert="~{components/folder_list :: folder_list(panelName='User Folders',folders=${userfolders})}"></div> -->
         </nav>
-        <main class="col" id="content">
+        <main class="col content" id="content">
           <div hx-get="/folder?folder=Inbox" hx-trigger="load" hx-target="#content">
           </div>
         </main>
