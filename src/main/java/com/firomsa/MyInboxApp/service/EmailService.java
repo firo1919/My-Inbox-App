@@ -3,7 +3,6 @@ package com.firomsa.MyInboxApp.service;
 import java.util.Optional;
 import java.util.UUID;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.datastax.oss.driver.api.core.uuid.Uuids;
@@ -15,7 +14,6 @@ public class EmailService {
     private EmailRepository emailRepository;
     private EmailListItemService emailListItemService;
 
-    @Autowired
     public EmailService(EmailRepository emailRepository, EmailListItemService emailListItemService) {
         this.emailRepository = emailRepository;
         this.emailListItemService = emailListItemService;

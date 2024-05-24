@@ -25,8 +25,6 @@ import com.firomsa.MyInboxApp.service.EmailService;
 public class ComposeController {
     private EmailService emailService;
 
-    
-    @Autowired
     public ComposeController(EmailService emailService) {
         this.emailService = emailService;
     }

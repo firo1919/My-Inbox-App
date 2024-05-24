@@ -1,0 +1,6 @@
+.content{
+    height: 80vh;
+}
+.folder, .emailitem{
+    cursor: pointer;
+}
