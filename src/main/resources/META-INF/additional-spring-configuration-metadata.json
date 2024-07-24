@@ -1,5 +1,17 @@
-{"properties": [{
-  "name": "datastax.astra",
-  "type": "java.lang.String",
-  "description": "A description for 'datastax.astra'"
-}]}
+{"properties": [
+  {
+    "name": "datastax.astra",
+    "type": "java.lang.String",
+    "description": "A description for 'datastax.astra'"
+  },
+  {
+    "name": "application-token",
+    "type": "java.lang.String",
+    "description": "A description for 'application-token'"
+  },
+  {
+    "name": "secure-connect-bundle",
+    "type": "java.lang.String",
+    "description": "A description for 'secure-connect-bundle'"
+  }
+]}
