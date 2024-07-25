@@ -19,6 +19,15 @@ public class EmailListItemKey {
     @PrimaryKeyColumn(name = "created_time_uuid" , ordinal = 2 , type = PrimaryKeyType.CLUSTERED, ordering = Ordering.DESCENDING)
     private UUID timeUuid;
 
+    public EmailListItemKey(String id, String label, UUID timeUuid) {
+        this.id = id;
+        this.label = label;
+        this.timeUuid = timeUuid;
+    }
+    
+    public EmailListItemKey() {
+    }
+
     public String getId() {
         return id;
     }

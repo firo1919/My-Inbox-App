@@ -3,6 +3,7 @@ package com.firomsa.MyInboxApp.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.firomsa.MyInboxApp.entity.Email;
 import com.firomsa.MyInboxApp.entity.EmailListItem;
@@ -22,6 +23,9 @@ public class EmailListItemService {
 
     public List<EmailListItem> getEmailListItems(String folder, String id){
         return emailListItemRepository.findAllByKey_IdAndKey_Label(id, folder);
+    }
+    public EmailListItem getEmailListItem(EmailListItemKey key){
+        return emailListItemRepository.findById(key).get();
     }
     public void save(Email email){
         email.getTo().forEach(id -> {
@@ -44,4 +48,10 @@ public class EmailListItemService {
         emailListItem.setTo(email.getTo());
         return emailListItem;
     }
+
+    @Transactional
+    public void update(EmailListItem emailListItem){
+        emailListItemRepository.save(emailListItem);
+    }
+
 }

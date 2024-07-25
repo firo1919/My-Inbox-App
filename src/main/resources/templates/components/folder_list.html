@@ -15,7 +15,7 @@
                     th:attr="hx-get=@{'/folder?folder='+${folder.label}}"
                     >
                         <p th:text="${folder.label}">Label</p>
-                        <span class="badge bg-primary rounded-pill">14</span>
+                        <div class="badge bg-primary rounded-pill" hx-get="" th:attr="hx-get=@{'/unreadCount?folder='+${folder.label}}" hx-trigger="every 10s" hx-target="this" hx-swap="innerHTML"></div>
                 </div>
                 </ul>
             </div>

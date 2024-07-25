@@ -16,14 +16,12 @@
             <div href="/compose" class="btn btn-primary" hx-get="/compose" hx-trigger="click" hx-target="#content">Compose Message</div>
           </div>
           <div th:insert="~{components/folder_list :: folder_list(panelName='Folders',folders=${defaultfolders})}"></div>
-          <!-- <div th:insert="~{components/folder_list :: folder_list(panelName='User Folders',folders=${userfolders})}"></div> -->
         </nav>
         <main class="col content" id="content">
           <div hx-get="/folder?folder=Inbox" hx-trigger="load" hx-target="#content">
           </div>
         </main>
       </div>
-      <footer class="row">123</footer>
     </div>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/htmx.min.js"></script>
