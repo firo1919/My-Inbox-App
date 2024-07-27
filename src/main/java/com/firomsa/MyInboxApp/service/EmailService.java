@@ -42,18 +42,17 @@ public class EmailService {
         return emailListItemService.getEmailListItem(new EmailListItemKey(userId, folder, email.getId())).isRead();
     }
 
-    public void setUnreadStatus(boolean b,String userId, String folder, Email email) {
+    public void setUnreadStatus(boolean readStatus, String userId, String folder, Email email) {
         EmailListItem emailListItem = emailListItemService.getEmailListItem(new EmailListItemKey(userId, folder, email.getId()));
-        emailListItem.setRead(b);
+        emailListItem.setRead(readStatus);
         emailListItemService.update(emailListItem);
     }
-    public int getFolderUnreadCount(String userId, String folder) {
-        int count = 0;
-        if(unreadEmailStatsRepository!=null){
-            List<UnreadEmailStats> stats = unreadEmailStatsRepository.findAllById(userId);
-            count = stats.stream().filter(n->(n.getLabel().equals(folder))).map(n->n.getUnreadCount()).reduce(0,Integer::sum);
-            return count;
-        }
-        return count;
+    
+    public int getFolderUnreadCount(String userId, String folderName) {
+        List<UnreadEmailStats> stats = unreadEmailStatsRepository.findAllById(userId);
+        return stats.stream()
+                    .filter(n -> n.getLabel().equals(folderName))
+                    .map(UnreadEmailStats::getUnreadCount)
+                    .reduce(0, Integer::sum);
     }
 }
